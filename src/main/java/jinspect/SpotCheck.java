@@ -2,13 +2,13 @@ package jinspect;
 
 public class SpotCheck {
 
-    private final String content;
+    private final Boolean[][] plate;
 
-    public SpotCheck(String content) {
-        this.content = content;
+    public SpotCheck(Boolean[][] plate) {
+        this.plate = plate;
     }
 
-    public String getContent() {
-        return content;
+    public Boolean[][] getPlate() {
+        return plate;
     }
 }

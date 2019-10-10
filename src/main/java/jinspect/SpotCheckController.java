@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpotCheckController {
 
     @RequestMapping("/spot_check")
-    public SpotCheck spotcheck() {
-        return new SpotCheck("TODO");
+    public SpotCheck spotcheck(@RequestParam(value = "plate", defaultValue = " ") String plate) {
+        //return new SpotCheck(plate);
     }
 }
