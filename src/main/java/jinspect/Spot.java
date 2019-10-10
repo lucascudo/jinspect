@@ -1,11 +1,12 @@
 package jinspect;
+import java.util.ArrayList;
 
 public class Spot {
 
-    private String[] pixels = new String[];
+    private ArrayList<String> pixels = new ArrayList();
     private Integer size = 0;
 
-    public String[] getPixels() {
+    public ArrayList<String> getPixels() {
         return this.pixels;
     }
 
