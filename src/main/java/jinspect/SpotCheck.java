@@ -46,12 +46,12 @@ public class SpotCheck {
         String pixel = x.toString() + y.toString();
         for (Spot spot : this.spots) {
             if (spot.getPixels().contains(pixel)) {
-                return false;
+                return;
             }
         }
         this.spots.add(new Spot());
-        spotIndex = this.spots.length;
-        this.spots[spotIndex].addPixel(pixel);
+        spotIndex = this.spots.size();
+        this.spots.get(spotIndex).addPixel(pixel);
         tempX = x - 1;
         if (plate[tempX][y]) { //top
             this.addPixelToSpot(spotIndex, plate, tempX, y);
@@ -80,7 +80,7 @@ public class SpotCheck {
             }
         }
         if (!registered) {
-            this.spots[spotIndex].addPixel(pixel);
+            this.spots.get(spotIndex).addPixel(pixel);
             this.mapSpot(plate, x, y);
         }
     }
