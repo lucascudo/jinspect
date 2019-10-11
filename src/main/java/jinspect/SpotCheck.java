@@ -28,14 +28,6 @@ public class SpotCheck {
         return this.spots.size();
     }
 
-    public Integer getbiggest_spot_area() {
-        Integer biggest = 0;
-        for (Spot spot : this.spots) {
-            biggest = (biggest > spot.getPixels().size()) ? biggest : spot.getPixels().size();
-        }
-        return biggest;
-    }
-
     public Double getspots_average_area() {
         Double biggest = 0.0;
         Double sum = 0.0;
@@ -45,12 +37,20 @@ public class SpotCheck {
         return (sum > 0.0) ? sum / this.spots.size() : sum;
     }
 
+    public Integer getbiggest_spot_area() {
+        Integer biggest = 0;
+        for (Spot spot : this.spots) {
+            biggest = (biggest > spot.getPixels().size()) ? biggest : spot.getPixels().size();
+        }
+        return biggest;
+    }
+
     private void mapSpot(Boolean[][] plate, Integer x, Integer y) {
         Integer spotIndex;
         Boolean isNew = true;
         Integer tempX = x;
         Integer tempY = y;
-        String pixel = x.toString() + y.toString();
+        String pixel = x.toString() + '_' + y.toString();
         for (Spot spot : this.spots) {
             if (spot.getPixels().contains(pixel)) {
                 isNew = false;
@@ -81,17 +81,13 @@ public class SpotCheck {
     }
 
     private void addPixelToSpot(Integer spotIndex, Boolean[][] plate, Integer x, Integer y) {
-        Boolean registered = false;
-        String pixel = x.toString() + y.toString();
+        String pixel = x.toString() + '_' + y.toString();
         for (Spot spot : this.spots) {
             if (spot.getPixels().contains(pixel)) {
-                registered = true;
-                break;
+                return;
             }
         }
-        if (!registered) {
-            this.spots.get(spotIndex).addPixel(pixel);
-            this.mapSpot(plate, x, y);
-        }
+        this.spots.get(spotIndex).addPixel(pixel);
+        this.mapSpot(plate, x, y);
     }
 }
