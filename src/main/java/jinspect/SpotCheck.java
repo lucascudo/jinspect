@@ -5,9 +5,6 @@ public class SpotCheck {
 
     private final Boolean[][] plate;
     private Integer total_area = 0;
-    private Integer number_of_spots = 0;
-    private Integer biggest_spot_area = 0;
-    private Double spots_average_area = 0.0;
     private ArrayList<Spot> spots = new ArrayList();
 
     public SpotCheck(Boolean[][] plate) {
@@ -27,16 +24,16 @@ public class SpotCheck {
         return this.total_area;
     }
 
-    public Integer getnumber_of_spots() {
-        return this.number_of_spots;
+    public ArrayList<Spot> getnumber_of_spots() {
+        return this.spots;
     }
 
     public Integer getbiggest_spot_area() {
-        return this.biggest_spot_area;
+        return 0;
     }
 
     public Integer getspots_average_area() {
-        return this.number_of_spots;
+        return 0;
     }
 
     private void mapSpot(Boolean[][] plate, Integer x, Integer y) {
@@ -50,22 +47,22 @@ public class SpotCheck {
             }
         }
         this.spots.add(new Spot());
-        spotIndex = this.spots.size();
+        spotIndex = this.spots.size() - 1;
         this.spots.get(spotIndex).addPixel(pixel);
         tempX = x - 1;
-        if (plate[tempX][y]) { //top
+        if (tempX >= 0 && plate[tempX][y]) { //top
             this.addPixelToSpot(spotIndex, plate, tempX, y);
         }
         tempX = x + 1;
-        if (plate[tempX][y]) { //down
+        if (tempX < plate.length && plate[tempX][y]) { //down
             this.addPixelToSpot(spotIndex, plate, tempX, y);
         }
         tempY = y - 1;
-        if (plate[x][tempY]) { //left
+        if (tempY >= 0 && plate[x][tempY]) { //left
             this.addPixelToSpot(spotIndex, plate, x, tempY);
         }
         tempY = y + 1;
-        if (plate[x][tempY]) { //right
+        if (tempY < plate[x].length && plate[x][tempY]) { //right
             this.addPixelToSpot(spotIndex, plate, x, tempY);
         }
     }
