@@ -24,31 +24,44 @@ public class SpotCheck {
         return this.total_area;
     }
 
-    public ArrayList<Spot> getnumber_of_spots() {
-        return this.spots;
+    public Integer getnumber_of_spots() {
+        return this.spots.size();
     }
 
     public Integer getbiggest_spot_area() {
-        return 0;
+        Integer biggest = 0;
+        for (Spot spot : this.spots) {
+            biggest = (biggest > spot.getPixels().size()) ? biggest : spot.getPixels().size();
+        }
+        return biggest;
     }
 
-    public Integer getspots_average_area() {
-        return 0;
+    public Double getspots_average_area() {
+        Double biggest = 0.0;
+        Double sum = 0.0;
+        for (Spot spot : this.spots) {
+            sum += spot.getPixels().size();
+        }
+        return sum / this.spots.size();
     }
 
     private void mapSpot(Boolean[][] plate, Integer x, Integer y) {
         Integer spotIndex;
+        Boolean isNew = true;
         Integer tempX = x;
         Integer tempY = y;
         String pixel = x.toString() + y.toString();
         for (Spot spot : this.spots) {
             if (spot.getPixels().contains(pixel)) {
-                return;
+                isNew = false;
             }
         }
-        this.spots.add(new Spot());
         spotIndex = this.spots.size() - 1;
-        this.spots.get(spotIndex).addPixel(pixel);
+        if (isNew) {
+            this.spots.add(new Spot());
+            spotIndex = this.spots.size() - 1;
+            this.spots.get(spotIndex).addPixel(pixel);
+        }
         tempX = x - 1;
         if (tempX >= 0 && plate[tempX][y]) { //top
             this.addPixelToSpot(spotIndex, plate, tempX, y);
