@@ -42,7 +42,7 @@ public class SpotCheck {
         for (Spot spot : this.spots) {
             sum += spot.getPixels().size();
         }
-        return sum / this.spots.size();
+        return (sum > 0.0) ? sum / this.spots.size() : sum;
     }
 
     private void mapSpot(Boolean[][] plate, Integer x, Integer y) {
