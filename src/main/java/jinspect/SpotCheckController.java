@@ -15,7 +15,7 @@ public class SpotCheckController {
         for (Boolean[] row: plate) {
             if (row.length != plate.length) {
                 return "Invalid Matrix Format";
-            }    
+            }
         }
         return new SpotCheck(plate);
     }
