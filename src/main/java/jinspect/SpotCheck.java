@@ -85,7 +85,7 @@ public class SpotCheck {
         this.mapSpot(plate, x, y);
     }
 
-    public Boolean isPixelMapped(pixel) {
+    public Boolean isPixelMapped(String pixel) {
         for (Spot spot : this.spots) {
             if (spot.getPixels().contains(pixel)) {
                 return true;
