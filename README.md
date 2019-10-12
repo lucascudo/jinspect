@@ -1,4 +1,6 @@
 # jinspect
+[![CircleCI](https://circleci.com/gh/lucascudo/jinspect/tree/master.svg?style=svg)](https://circleci.com/gh/lucascudo/jinspect/tree/master)
+
 
 ## Run
 ```sh
