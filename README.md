@@ -1,12 +1,16 @@
 # jinspect
 
+## Run
+```sh
+./gradlew bootRun
+```
+
 ## Build
 ```sh
 ./gradlew build
 ```
 
-
-## Run
+## Test
 ```sh
-./gradlew bootRun
+./gradlew test
 ```
