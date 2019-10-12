@@ -51,7 +51,7 @@ public class SpotCheck {
         Integer tempX = x;
         Integer tempY = y;
         String pixel = x.toString() + '_' + y.toString();
-        $isNew = !this.isPixelMapped(pixel);
+        isNew = !this.isPixelMapped(pixel);
         spotIndex = this.spots.size() - 1;
         if (isNew) {
             this.spots.add(new Spot());
