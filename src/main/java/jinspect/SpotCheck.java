@@ -51,11 +51,7 @@ public class SpotCheck {
         Integer tempX = x;
         Integer tempY = y;
         String pixel = x.toString() + '_' + y.toString();
-        for (Spot spot : this.spots) {
-            if (spot.getPixels().contains(pixel)) {
-                isNew = false;
-            }
-        }
+        $isNew = !this.isPixelMapped(pixel);
         spotIndex = this.spots.size() - 1;
         if (isNew) {
             this.spots.add(new Spot());
@@ -82,12 +78,19 @@ public class SpotCheck {
 
     private void addPixelToSpot(Integer spotIndex, Boolean[][] plate, Integer x, Integer y) {
         String pixel = x.toString() + '_' + y.toString();
-        for (Spot spot : this.spots) {
-            if (spot.getPixels().contains(pixel)) {
-                return;
-            }
+        if (this.isPixelMapped(pixel)) {
+            return;
         }
         this.spots.get(spotIndex).addPixel(pixel);
         this.mapSpot(plate, x, y);
+    }
+
+    public Boolean isPixelMapped(pixel) {
+        for (Spot spot : this.spots) {
+            if (spot.getPixels().contains(pixel)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
