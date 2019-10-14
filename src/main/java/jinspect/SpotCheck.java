@@ -1,4 +1,5 @@
 package jinspect;
+
 import java.util.ArrayList;
 
 public class SpotCheck {
